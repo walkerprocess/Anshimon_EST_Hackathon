@@ -87,15 +87,15 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 cp .env.example .env
-python run_all.py
+python -X utf8 run_all.py
 ```
 
 In a second terminal:
 
 ```bash
 cd components/integration
-python run_demo.py --check
-python run_demo.py --file samples/01_high_shelter.json --dry-run
+python -X utf8 run_demo.py --check
+python -X utf8 run_demo.py --file samples/01_high_shelter.json --dry-run
 ```
 
 Never use a real older adult's phone number for a demo. Use a fictional profile and a consenting team member's number only.
@@ -152,20 +152,22 @@ See the component READMEs for the complete contracts and configuration notes.
 ```bash
 # Contract and orchestration tests
 cd components/integration
-python test_connection.py
+python -X utf8 test_connection.py
 
 # RAG integration tests
 cd rag
-python test_integration.py
+python -X utf8 test_integration.py
 
 # Offline shelter-routing demo
 cd ../../shelter-routing/shelter
-python recommend.py --demo
+python -X utf8 recommend.py --demo
 
 # Spring tests
 cd ../../backend
 ./gradlew test
 ```
+
+`-X utf8` keeps Korean diagnostic output portable on Windows consoles that otherwise default to CP949.
 
 ## Data and Prototype Limitations
 

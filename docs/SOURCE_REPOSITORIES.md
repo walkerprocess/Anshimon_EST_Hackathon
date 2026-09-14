@@ -20,3 +20,4 @@ This monorepo was assembled on September 13, 2026 from the public repositories o
 - Original Korean READMEs are preserved as `README.ko.md`; the active `README.md` files are English editions prepared for this consolidated repository.
 - The award certificate was supplied separately by the repository owner and is stored under `docs/award` in both original PDF and GitHub-renderable PNG form.
 - No high-confidence API keys or access tokens were detected in the copied working trees. Populated `.env` files remain excluded by `.gitignore`.
+- Post-import verification corrected one syntax error in `components/shelter-routing/shelter/recommend.py` (a missing comma in `DEMO_LATLON`) and changed JSON file loading to close the input deterministically. The regression suite and RED/GREEN evidence are recorded in [`docs/testing/shelter-demo-coordinate.tdd.md`](testing/shelter-demo-coordinate.tdd.md).

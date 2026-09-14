@@ -15,12 +15,12 @@ cd components/integration
 pip install -r requirements.txt
 cd rag
 
-python ingest.py
-python retrieval.py
-python prompt_builder.py
-python evidence_verifier.py
-python pipeline.py
-python test_integration.py
+python -X utf8 ingest.py
+python -X utf8 retrieval.py
+python -X utf8 prompt_builder.py
+python -X utf8 evidence_verifier.py
+python -X utf8 pipeline.py
+python -X utf8 test_integration.py
 ```
 
 Start the API with:

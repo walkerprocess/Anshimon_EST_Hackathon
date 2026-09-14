@@ -24,11 +24,11 @@ python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 
-python ingest.py
-python retrieval.py
-python prompt_builder.py
-python evidence_verifier.py
-python pipeline.py
+python -X utf8 ingest.py
+python -X utf8 retrieval.py
+python -X utf8 prompt_builder.py
+python -X utf8 evidence_verifier.py
+python -X utf8 pipeline.py
 ```
 
 Without LLM credentials, the pipeline uses a deterministic generator built from retrieved evidence, so the complete retrieval-to-verification path remains testable offline.
@@ -48,7 +48,7 @@ uvicorn server:app --host 0.0.0.0 --port 8000
 ## Test
 
 ```bash
-python test_integration.py
+python -X utf8 test_integration.py
 ```
 
 The original detailed Korean documentation is preserved in [README.ko.md](README.ko.md). The integrated, newer snapshot used by the complete care flow is under [`../integration/rag`](../integration/rag).

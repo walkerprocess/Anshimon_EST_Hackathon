@@ -17,9 +17,9 @@ Straight-line distance is used only for candidate reduction. The final recommend
 pip install aiohttp python-dotenv
 cp .env.example .env
 
-python recommend.py --demo
-python recommend.py 37.5301 127.1236
-python recommend.py 37.5301 127.1236 --file=cooling_shelters.csv
+python -X utf8 recommend.py --demo
+python -X utf8 recommend.py 37.5301 127.1236
+python -X utf8 recommend.py 37.5301 127.1236 --file=cooling_shelters.csv
 ```
 
 Use `--file` for reliable demonstrations when a local CSV or JSON dataset is available. The loader detects common latitude and longitude columns by valid Korean coordinate ranges.

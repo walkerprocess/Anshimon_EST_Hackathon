@@ -17,15 +17,15 @@ python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 cp .env.example .env
-python run_all.py
+python -X utf8 run_all.py
 ```
 
 In another terminal:
 
 ```bash
-python run_demo.py --check
-python run_demo.py --list
-python run_demo.py --file samples/01_high_shelter.json --dry-run
+python -X utf8 run_demo.py --check
+python -X utf8 run_demo.py --list
+python -X utf8 run_demo.py --file samples/01_high_shelter.json --dry-run
 ```
 
 Five date-independent scenarios are included under `samples/`: a high-risk Seoul resident with a shelter, a critical case, a non-Seoul case, a minimal-input case, and a no-consent case.
@@ -33,12 +33,12 @@ Five date-independent scenarios are included under `samples/`: a high-risk Seoul
 ## Test
 
 ```bash
-python test_connection.py
+python -X utf8 test_connection.py
 cd rag
-python test_integration.py
+python -X utf8 test_integration.py
 ```
 
-The tests do not require external APIs. Missing LLM credentials activate a deterministic mock path for the evidence pipeline.
+The tests do not require external APIs. Missing LLM credentials activate a deterministic mock path for the evidence pipeline. The `-X utf8` flag prevents Windows CP949 consoles from rejecting Korean diagnostic output.
 
 ## Care-Run Contract
 
