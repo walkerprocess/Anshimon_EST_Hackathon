@@ -27,7 +27,7 @@ src/main/java/com/nmdw/ansimon/
 ├── risk/        # ML 위험도 API 연동, 위험 스냅샷, 정책 보정
 ├── shelter/     # 무더위쉼터 동기화, 후보 검색, TMAP 경로 캐시
 ├── guidance/    # Spring AI 기반 LLM/RAG 안내 계획 생성/검증
-├── contact/     # 예방 전화 작업, 예약, 재시도, 결과 콜백
+├── contact/     # 외부 LLM/RAG 전화 결과 수신, 계획·전화작업·통화결과 저장
 ├── support/     # 지원 업무 생성, 우선순위, 배정/완료
 ├── dispatch/    # 업무량, 가용 인력, 추가 필요 인원 계산
 └── dashboard/   # 대시보드 요약 지표와 하이라이트 조회
@@ -65,7 +65,8 @@ src/main/java/com/nmdw/ansimon/
 - [ ] 민감정보는 로그에 남기지 않습니다.
 - [ ] 전화번호 검색은 원문이 아닌 해시 기반으로 처리합니다.
 - [ ] LLM 응답은 자유 문장으로 저장하지 않고 DTO/record로 구조화해 검증합니다.
-- [ ] 동의가 없거나 철회된 대상자는 자동전화 대상에서 제외합니다.
+- [ ] 대응계획 생성과 전화는 외부 LLM/RAG 서버가 수행합니다. 이 서버는 발신 어댑터·재시도 스케줄러를 두지 않습니다.
+- [ ] 동의가 없거나 철회된 대상자는 연락 대상 목록에서 제외합니다.
 
 ## Commands
 - `./gradlew bootRun` - 개발 서버 실행
@@ -80,4 +81,5 @@ Windows에서 Gradle Wrapper가 없으면 로컬 Gradle 설치 후 `gradle bootR
 - OpenAI, 기상청, TMAP, 전화 어댑터 키는 환경변수 또는 배포 환경 secret으로 관리합니다.
 - MySQL은 서비스 데이터 저장소입니다.
 - PostgreSQL + pgvector는 RAG 임베딩 검색 저장소입니다.
-- 자동전화는 데이터 최신성, 동의 상태, 안내 계획 검증을 통과한 경우에만 실행합니다.
+- 대응계획 생성부터 전화까지는 외부 LLM/RAG 서버가 수행하고, 이 서버는 결과를 받아 저장·조회·후속 업무로 연결합니다.
+- 외부 서버는 완료 후 `POST /internal/v1/contact/results`로 대응계획과 통화 결과를 한 번에 전송합니다.

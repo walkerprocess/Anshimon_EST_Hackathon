@@ -1,0 +1,2 @@
+# Preserve historical branch artifacts byte-for-byte, including original spacing.
+archive/source-branches/** -whitespace

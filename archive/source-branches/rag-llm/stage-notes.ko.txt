@@ -1,0 +1,2 @@
+문서 수집·청킹(ingest) → 검색(retrieval) → 프롬프트(prompt_builder)
+→ 생성(llm_client) → 근거검증(evidence_verifier) → 출력스키마(schemas)

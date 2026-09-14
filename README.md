@@ -15,7 +15,7 @@
 
 ANSIMON is a proactive heatwave-care prototype for social workers and older adults. It predicts next-day heat risk, grounds personalized guidance in reviewed evidence, recommends a walkable cooling shelter, places a Korean AI care call, and turns the result into structured follow-up information.
 
-> This repository is the consolidated, English-documented edition of the eight public repositories originally maintained by the [N-M-D-W GitHub organization](https://github.com/N-M-D-W). Seven repositories contained project files; the eighth, `ansimon-total`, was empty at the time of consolidation. Exact source revisions are recorded in [Source Repositories](docs/SOURCE_REPOSITORIES.md).
+> This repository is the consolidated, English-documented edition of the eight public repositories originally maintained by the [N-M-D-W GitHub organization](https://github.com/N-M-D-W). Seven repositories contained project files; the eighth, `ansimon-total`, was empty at the time of consolidation. Default and non-default branches were audited, with branch-only artifacts preserved under `archive`. Exact source revisions are recorded in [Source Repositories](docs/SOURCE_REPOSITORIES.md).
 
 ## Why ANSIMON
 
@@ -50,7 +50,7 @@ flowchart LR
 
 | Component | Path | Stack | Responsibility |
 | --- | --- | --- | --- |
-| Backend | [`components/backend`](components/backend) | Java 21, Spring Boot, JPA, Flyway | Domain API, persistence boundaries, external-service configuration |
+| Backend | [`components/backend`](components/backend) | Java 21, Spring Boot, JPA, Flyway | Profiles, forecasts, guidance runs, call outcomes, persistence, and external-service configuration |
 | Dashboard | [`components/dashboard`](components/dashboard) | HTML, CSS, JavaScript | Social-worker dashboard and older-adult management UI |
 | Integrated care flow | [`components/integration`](components/integration) | Python, FastAPI | Validates contracts and coordinates RAG, calling, and backend callbacks |
 | Heat-risk model | [`components/heatwave-ml`](components/heatwave-ml) | pandas, scikit-learn, XGBoost | Next-day Seoul heatwave and older-adult heat-illness risk scoring |
@@ -121,7 +121,7 @@ cd components/backend
 # gradlew.bat bootRun
 ```
 
-Copy `.env.example` values into your environment before enabling external integrations. Local configuration defaults the Spring AI vector store to `none`.
+Copy `.env.example` values into your shell or IDE run configuration before enabling external integrations; Spring Boot does not automatically load that file. The backend requires MySQL and defaults the Spring AI vector store to `none`.
 
 ## Local Ports
 
@@ -193,7 +193,7 @@ ANSIMON received the **Excellence Award** at the 2026 EST AI Challengers Jeju Of
 
 Original Git commit authors, as recorded across the source repositories: **Kevin Kim, kylouiskang, PARK MINHYEON, poohgajoah, pure77, and walkerprocess**.
 
-Every active README in this consolidated repository is in English. The original Korean documentation is preserved next to it as `README.ko.md`. See [Source Repositories](docs/SOURCE_REPOSITORIES.md) for the exact revisions and directory mapping used for this consolidation.
+Every active README in this consolidated repository is in English. The original Korean documentation is preserved next to it as `README.ko.md`, while non-default-branch uploads that are not part of the runnable system are documented under [`archive/source-branches`](archive/source-branches). See [Source Repositories](docs/SOURCE_REPOSITORIES.md) for the exact revisions and directory mapping used for this consolidation.
 
 ## License
 

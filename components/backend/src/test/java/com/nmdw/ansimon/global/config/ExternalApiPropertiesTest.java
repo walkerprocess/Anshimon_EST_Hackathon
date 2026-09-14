@@ -13,12 +13,13 @@ class ExternalApiPropertiesTest {
                 new ExternalApiProperties.Endpoint("https://shelter.example.test", "shelter-key"),
                 new ExternalApiProperties.Endpoint("https://tmap.example.test", "tmap-key"),
                 new ExternalApiProperties.Endpoint("http://localhost:8000", ""),
-                new ExternalApiProperties.Endpoint("http://localhost:9000", "")
+                new ExternalApiProperties.Endpoint("http://localhost:7000", "connection-key")
         );
 
         assertThat(properties.kma().baseUrl()).isEqualTo("https://kma.example.test");
         assertThat(properties.tmap().apiKey()).isEqualTo("tmap-key");
         assertThat(properties.ml().baseUrl()).isEqualTo("http://localhost:8000");
-        assertThat(properties.phone().baseUrl()).isEqualTo("http://localhost:9000");
+        assertThat(properties.connection().baseUrl()).isEqualTo("http://localhost:7000");
+        assertThat(properties.connection().apiKey()).isEqualTo("connection-key");
     }
 }
