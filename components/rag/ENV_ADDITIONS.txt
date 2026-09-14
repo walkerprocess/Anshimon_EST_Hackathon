@@ -1,0 +1,16 @@
+# ── 이번 통합으로 추가된 .env 항목 (기존 항목은 그대로 두세요) ─────────────
+# Alan LLM
+ALAN_API_KEY=<이미 있음>
+ALAN_API_MODE=auto          # auto | alan_query | openai | json_post
+                            #   alan_check.py 가 알려준 값을 넣으면 탐색을 건너뜁니다
+ALAN_API_URL=               # 주최측 문서의 엔드포인트를 알면 여기 (모르면 비워두세요)
+LLM_FALLBACK_TO_MOCK=1      # Alan 실패 시 mock 생성기로 폴백 (시연 안전장치). 0=실패를 그대로 노출
+
+# 쉼터
+SHELTER_SERVICE=TbGtnHwcwP  # 서울열린데이터광장 서비스명 (무더위쉼터 표준데이터)
+SHELTER_FILE=               # 포털에서 받은 CSV/JSON 경로. 채우면 OpenAPI 대신 이 파일을 씁니다
+                            #   → 시연 당일 포털 장애를 피하는 가장 확실한 방법
+SHELTER_REVIEW_BLOCKS_CALL=1  # 쉼터 경로가 needs_review 일 때
+                            #   1(기본) = 자동전화 보류(422)   ← 기존 동작
+                            #   0       = 전화는 걸되 쉼터에 needsReview 표시(200)
+                            #   TMAP 장애 때 전화가 통째로 사라지는 게 싫으면 0

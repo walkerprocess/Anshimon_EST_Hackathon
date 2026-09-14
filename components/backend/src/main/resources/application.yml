@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ansimon-backend
+  ai:
+    vectorstore:
+      type: ${SPRING_AI_VECTORSTORE_TYPE:none}
+      pgvector:
+        initialize-schema: false
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+
+server:
+  port: ${PORT:${SERVER_PORT:8080}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
