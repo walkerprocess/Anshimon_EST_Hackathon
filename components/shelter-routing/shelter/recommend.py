@@ -30,7 +30,7 @@ import aiohttp
 from dotenv import load_dotenv
 
 # DB 연결 전까지 쓰는 예시 좌표. 나중에 elderly_profile.latitude/longitude 로 대체된다.
-DEMO_LATLON = (37.5301 127.1236)   # 서울시청
+DEMO_LATLON = (37.5301, 127.1236)   # 서울시청
 
 SEOUL = "http://openapi.seoul.go.kr:8088"
 SERVICE = os.getenv("SHELTER_SERVICE", "TbGtnHwcwP")   # 서울시 무더위쉼터 표준데이터
@@ -104,7 +104,8 @@ def from_file(path: str) -> list[dict]:
     if path.lower().endswith(".csv"):
         with open(path, encoding="utf-8-sig", newline="") as f:
             return list(csv.DictReader(f))
-    body = json.loads(open(path, encoding="utf-8-sig").read())
+    with open(path, encoding="utf-8-sig") as source:
+        body = json.load(source)
     if isinstance(body, list):
         return body
     for v in body.values():                      # {"DATA":[...]} / {"서비스명":{"row":[...]}}
